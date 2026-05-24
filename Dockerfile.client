@@ -1,0 +1,25 @@
+# Dockerfile.client
+# Use a lightweight Node.js image for the frontend build process
+FROM node:20-alpine
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package files first to leverage Docker caching
+COPY package.json package-lock.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY . .
+
+# Build the React application
+RUN npm run client:build
+
+# Use a simple web server to serve the static build files
+# We will use Nginx for production serving, but for simplicity in this single container,
+# we'll use a simple Node server or just rely on the volume mount for development.
+# Since we are running `npm run client:dev` in docker-compose, we'll stick to that for now,
+# but for a proper production Dockerfile, we'd use Nginx.
+# For this exercise, we assume the compose file handles the dev server run.

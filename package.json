@@ -1,0 +1,33 @@
+{
+  "name": "lords-dashboard",
+  "version": "0.1.0",
+  "description": "A full-stack dashboard for Lord.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "client:dev": "vite --host",
+    "client:build": "vite build",
+    "server:dev": "node server.js",
+    "server:build": "echo 'Server build complete'",
+    "dev": "concurrently \"npm run client:dev\" \"npm run server:dev\"",
+    "build": "npm run client:build && npm run server:build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.19.2",
+    "better-sqlite3": "^9.1.0",
+    "sqlite3": "^6.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.63",
+    "@types/react-dom": "^18.2.21",
+    "@vitejs/plugin-react": "^4.3.1",
+    "concurrently": "^8.2.2"
+  }
+}

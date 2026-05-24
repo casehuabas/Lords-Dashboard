@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # --- Backend Service (API) ---
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: lords_api
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/app
+      - /app/node_modules # Anonymous volume to keep container's node_modules
+      - ./database.sqlite:/app/database.sqlite
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+    command: npm run server:dev
+
+  # --- Frontend Service (React/Vite) ---
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: lords_client
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules # Anonymous volume to keep container's node_modules
+    command: npm run client:dev
+    depends_on:
+      - api

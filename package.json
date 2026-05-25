@@ -10,24 +10,27 @@
     "server:dev": "node server.js",
     "server:build": "echo 'Server build complete'",
     "dev": "concurrently \"npm run client:dev\" \"npm run server:dev\"",
-    "build": "npm run client:build && npm run server:build"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "better-sqlite3": "^12.10.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.19.2",
-    "better-sqlite3": "^9.1.0",
-    "sqlite3": "^6.0.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sqlite3": "^6.0.1",
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/react": "^18.2.63",
     "@types/react-dom": "^18.2.21",
     "@vitejs/plugin-react": "^4.3.1",
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "jest": "^30.4.2"
   }
 }

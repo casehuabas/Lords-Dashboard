@@ -1,9 +1,16 @@
 # Dockerfile.backend
-# Use a lightweight Node.js image
-FROM node:20-alpine
+# Use a slim Node.js image (Debian-based) for better compatibility with native modules
+FROM node:20-slim
 
 # Set the working directory inside the container
 WORKDIR /app
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y \
+    python3 \
+    make \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy package files first to leverage Docker caching
 COPY package.json .
